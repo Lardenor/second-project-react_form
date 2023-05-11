@@ -1,0 +1,27 @@
+.my-link{
+    text-decoration: none;
+}
+.center_pos{
+    top: 95% ;
+left: 10px;
+}
+.error-message {
+font-size: 12 px;
+
+    margin: 0;
+}
+.my-margin{
+    margin-bottom: 22px;
+}
+.padding-label{
+    padding-left: 2px;
+    font-weight: bold;
+}
+.width_form{
+    max-width: 500px;
+    width: 100%;
+}
+.width_form_container{
+    max-width: 350px;
+    width: 100%;
+}

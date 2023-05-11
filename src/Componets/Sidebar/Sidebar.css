@@ -1,0 +1,23 @@
+.padding_table{
+    padding-right: 10px;
+}
+.contacts_div{
+    width: 100px;
+    text-align: center;
+}
+.bg_color_cont_1{
+background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
+
+}
+.bg_color_cont_2 {background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);}
+.bg_color_cont_3 {background: linear-gradient(90deg, #9ebd13 0%, #008552 100%);}
+.bg_color_cont_4 {background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+}
+.bg_color_cont{
+display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    text-align: center;
+    color: white;
+}
