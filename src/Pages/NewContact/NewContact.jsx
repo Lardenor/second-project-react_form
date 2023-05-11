@@ -1,9 +1,18 @@
+// all importn
+// all importn
+// all importn
 import "./NewContact.css";
 // valid
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { v4 as uuidv4 } from "uuid";
-const NewContact = () => {
+import { useNavigate } from "react-router-dom";
+// all importn
+// all importn
+
+// all importn
+
+const NewContact = ({onNewContact}) => {
   const initialValues = {
     id: uuidv4(),
     name: "",
@@ -40,8 +49,15 @@ name: Yup.string()
       .required("Status is required"),
     favorite: Yup.boolean(),
   });
+  //   ?Валідація Япі кінець
+//   ?Валідація Япі кінець
+//   ?Валідація Япі кінець
+//   ?Валідація Япі кінець
+const navigate=useNavigate();
   const handleSubmit = (values) => {
     console.log(values);
+    onNewContact(values);
+    navigate('/');
   };
   function validateEmail(value) {
    let error;
