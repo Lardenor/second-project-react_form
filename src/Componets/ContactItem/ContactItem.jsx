@@ -23,9 +23,18 @@ const ContactItem = () => {
     const updatedContact = { ...contact, favorite: !contact.favorite };
     dispatch(toggleFavorite(updatedContact));
   };
-
+const countFavoriteContacts = filteredContacts.reduce((count, contact) => {
+    if (contact.favorite) {
+      return count + 1;
+    }
+    return count;
+  }, 0);
   return (
+    
     <div className="bg-light rounded-end container p-5">
+      <div >
+        <span className="favorite_user p-1 rounded">Favorite Contacts: {countFavoriteContacts}</span>
+      </div>
       {filteredContacts.map((contact) => (
         <div key={contact.id} className="d-flex justify-content-around align-items-center rounded-pill border-info border-top-0 border py-3 px-5 shadow-lg mb-5">
           {contact.avatar && (
@@ -41,7 +50,7 @@ const ContactItem = () => {
                 onClick={() => handleToggleFavorite(contact)} // Додано обробник події onClick
                 style={{
                   fill: contact.favorite ? '#FFA800' : '#FFf',
-                  opacity: contact.favorite ? 1 : 0.3
+                 
                 }}
               >
                 <path
