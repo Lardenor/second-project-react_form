@@ -32,7 +32,7 @@ const countFavoriteContacts = filteredContacts.reduce((count, contact) => {
   return (
     
     <div className="bg-light rounded-end container p-5">
-      <div >
+      <div className="mb-3" >
         <span className="favorite_user p-1 rounded">Favorite Contacts: {countFavoriteContacts}</span>
       </div>
       {filteredContacts.map((contact) => (

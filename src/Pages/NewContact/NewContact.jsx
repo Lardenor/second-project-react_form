@@ -30,8 +30,11 @@ const NewContact = () => {
 const navigate=useNavigate();
 const dispatch=useDispatch();
   const handleSubmit = (values) => {
-    console.log(values);
-   dispatch(addContact(values))
+   const formattedPhone = values.phone.split(" ").join("");
+    const formattedValues = { ...values, phone: formattedPhone };
+    
+    console.log(formattedValues);
+    dispatch(addContact(formattedValues));
     navigate('/');
   };
   function validateEmail(value) {

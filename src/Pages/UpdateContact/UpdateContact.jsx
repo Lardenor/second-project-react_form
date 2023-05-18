@@ -26,10 +26,12 @@ const UpdateContact = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (values) => {
-    if(contact!==values){
-        dispatch(editContact(id,values))
+    const formattedPhone = values.phone.split(" ").join("");
+    const formattedValues = { ...values, phone: formattedPhone };
+    if(contact!==formattedValues){
+        dispatch(editContact(id,formattedValues))
     }
-dispatch(editContact(id,values))
+dispatch(editContact(id,formattedValues))
 
     navigate("/");
   };

@@ -5,8 +5,9 @@ name: Yup.string()
       .required("Name is required"),
     // phone: Yup.number().required("Phone is required"),
      phone: Yup.string()
-    .matches(/^\d{10}$/, "Phone number example 0963311223") 
-    .required("Phone number is required"), 
+    .matches(/^\d{10}$/, "Phone number example 0963311223")
+    .transform((value) => (value ? value.replace(/\s/g, "") : value))
+    .required("Phone number is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
      avatar: Yup.mixed().required("Avatar is required").test("fileFormat", "Invalid file format", (value) => {
       if (!value) return true; // Якщо значення пусте, то тест пройдений
