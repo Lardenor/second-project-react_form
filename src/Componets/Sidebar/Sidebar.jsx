@@ -43,6 +43,7 @@ const allContacts=contacts.length;
     </div>
     <div className="rounded bg_color_cont_4 bg_color_cont">{statusContact.Friends}</div>
   </div>
+  
 </div>
 
 

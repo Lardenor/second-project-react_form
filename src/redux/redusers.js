@@ -1,8 +1,10 @@
-import { ADD_CONTACT, DELETE_CONTACT, EDIT_CONTACT,SEARCH_CONTACT } from "./type";
+import { ADD_CONTACT, DELETE_CONTACT, EDIT_CONTACT, SEARCH_CONTACT, TOGGLE_FAVORITE } from "./type";
+
 const initialState = {
   contacts: [],
- searchTerm:''
+  searchTerm: '',
 };
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CONTACT:
@@ -33,10 +35,19 @@ const reducer = (state = initialState, action) => {
     case SEARCH_CONTACT:
       return {
         ...state,
-        searchTerm:action.payload
+        searchTerm: action.payload,
+      };
+    case TOGGLE_FAVORITE:
+      const { id } = action.payload;
+      return {
+        ...state,
+        contacts: state.contacts.map((contact) =>
+          contact.id === id ? { ...contact, favorite: !contact.favorite } : contact
+        ),
       };
     default:
       return state;
   }
 };
+
 export default reducer;
