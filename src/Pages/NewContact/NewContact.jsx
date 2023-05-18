@@ -1,18 +1,21 @@
 // all importn
 // all importn
 // all importn
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/actions";
 import "./NewContact.css";
 // valid
-import * as Yup from "yup";
+
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
+import { validationSchema } from "../../validation/validation";
 // all importn
 // all importn
 
 // all importn
 
-const NewContact = ({onNewContact}) => {
+const NewContact = () => {
   const initialValues = {
     id: uuidv4(),
     name: "",
@@ -23,40 +26,12 @@ const NewContact = ({onNewContact}) => {
     status: "",
     favorite: "",
   };
-//   ?Валідація Япі
-//   ?Валідація Япі
-//   ?Валідація Япі
-//   ?Валідація Япі
 
-  const validationSchema = Yup.object().shape({
-name: Yup.string()
-      .matches(/^[a-zA-Z\s]*$/, "Name should only contain latin/letters")
-      .required("Name is required"),
-    // phone: Yup.number().required("Phone is required"),
-     phone: Yup.string()
-    .matches(/^\d{10}$/, "Phone number example 0963311223") 
-    .required("Phone number is required"), 
-    email: Yup.string().email("Invalid email").required("Email is required"),
-     avatar: Yup.mixed().required("Avatar is required").test("fileFormat", "Invalid file format", (value) => {
-      if (!value) return true; // Якщо значення пусте, то тест пройдений
-      return value && ["image/jpg", "image/jpeg"].includes(value.type); // Перевірка формату файлу
-    }),
-    gender: Yup.string()
-      .oneOf(["Man", "Woman"], "Invalid gender")
-      .required("Gender is required"),
-    status: Yup.string()
-      .oneOf(["Work", "Family", "Private", "Friends"], "Invalid status")
-      .required("Status is required"),
-    favorite: Yup.boolean(),
-  });
-  //   ?Валідація Япі кінець
-//   ?Валідація Япі кінець
-//   ?Валідація Япі кінець
-//   ?Валідація Япі кінець
 const navigate=useNavigate();
+const dispatch=useDispatch();
   const handleSubmit = (values) => {
     console.log(values);
-    onNewContact(values);
+   dispatch(addContact(values))
     navigate('/');
   };
   function validateEmail(value) {

@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 // css
 
 import './App.css';
@@ -8,29 +10,47 @@ import UpdateContact from "./Pages/UpdateContact/UpdateContact"
 import NotFound from "./Pages/NotFound/NotFound"
 import Header from "./Componets/Header/Header"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+// import { useState } from 'react';
 function App() {
-  const[stor,setStor]=useState([]);
-  const handleNewContact =(newContact)=>{
-setStor(prevStar=>[...prevStar,newContact])
-console.log(stor);
-  }
+//   const[stor,setStor]=useState([]);
+//   const handleNewContact =(newContact)=>{
+// setStor(prevStar=>[...prevStar,newContact])
+// console.log(stor);
+
+//   }
+//     const handleDeleteContact = (id) => {
+//     setStor((prevStar) => prevStar.filter((contact) => contact.id !== id));
+//   };
+  //   const handleUpdateContact = (updatedContact) => {
+  //   setStor((prevStar) =>
+  //     prevStar.map((contact) => (contact.id === updatedContact.id ? updatedContact : contact))
+  //   );
+  // };
   return (
     <div className='container .bg-info-subtle .bg-secondary'>
-  <Router>
+      <Provider store={store}>
+ <Router>
    <Header/>
     <Routes>
-      <Route path="/" element={<ContactList stor={stor}/>}/>
-      <Route path="/new-contact" element={<NewContact onNewContact={handleNewContact}/>}/>
+       <Route path="/" element={<ContactList/>} />
+      {/* <Route path="/" element={<ContactList stor={stor}/>}/> */}
+      <Route path="/new-contact" element={<NewContact/>}/>
       <Route path="/update-contact" element={<UpdateContact/>}/>
+     {/* <Route
+            path='/update-contact/:id'
+            element={<UpdateContact stor={stor} onUpdateContact={handleUpdateContact} />}
+          /> */}
       <Route path="*" element={<NotFound/>}/>
 
 
     </Routes>
 
   </Router>
+      </Provider>
+ 
     </div>
   );
 }
 
 export default App;
+
