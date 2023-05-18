@@ -21,11 +21,7 @@ function App() {
 //     const handleDeleteContact = (id) => {
 //     setStor((prevStar) => prevStar.filter((contact) => contact.id !== id));
 //   };
-  //   const handleUpdateContact = (updatedContact) => {
-  //   setStor((prevStar) =>
-  //     prevStar.map((contact) => (contact.id === updatedContact.id ? updatedContact : contact))
-  //   );
-  // };
+
   return (
     <div className='container .bg-info-subtle .bg-secondary'>
       <Provider store={store}>
@@ -33,13 +29,10 @@ function App() {
    <Header/>
     <Routes>
        <Route path="/" element={<ContactList/>} />
-      {/* <Route path="/" element={<ContactList stor={stor}/>}/> */}
+  
       <Route path="/new-contact" element={<NewContact/>}/>
-      <Route path="/update-contact" element={<UpdateContact/>}/>
-     {/* <Route
-            path='/update-contact/:id'
-            element={<UpdateContact stor={stor} onUpdateContact={handleUpdateContact} />}
-          /> */}
+      <Route path="/update-contact/:id" element={<UpdateContact/>}/>
+    
       <Route path="*" element={<NotFound/>}/>
 
 
