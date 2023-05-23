@@ -1,7 +1,7 @@
 // all importn
 // all importn
 // all importn
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/actions";
 import "./NewContact.css";
 // valid
@@ -10,6 +10,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { validationSchema } from "../../validation/validation";
+import React, { useEffect } from "react";
+import * as Yup from "yup";
 // all importn
 // all importn
 
@@ -29,6 +31,12 @@ const NewContact = () => {
 
 const navigate=useNavigate();
 const dispatch=useDispatch();
+const categories = useSelector((state) => state.categories);
+useEffect(() => {
+    validationSchema.fields.status = Yup.string()
+      .oneOf(["Work", "Family", "Private", "Friends", ...categories], "Invalid status")
+      .required("Status is required");
+  }, [categories]);
   const handleSubmit = (values) => {
    const formattedPhone = values.phone.split(" ").join("");
     const formattedValues = { ...values, phone: formattedPhone };
@@ -158,13 +166,12 @@ const dispatch=useDispatch();
             {/* Status */}
             <div className="d-flex bg-light rounded flex-column my-margin position-relative">
               <label htmlFor="status" className="mb-1 padding-label">Status</label>
-              <Field as="select" name="status"className="p-2">
-                <option value="">Choose Status</option>
-                <option value="Work">Work</option>
-                <option value="Family">Family</option>
-                <option value="Private">Private</option>
-                <option value="Friends">Friends</option>
-              </Field>
+              <Field as="select" name="status" className="p-2">
+  <option value="">Choose Status</option>
+  {categories.map((category) => (
+    <option key={category} value={category}>{category}</option>
+  ))}
+</Field>
               <ErrorMessage name="status">
                 {
                     (errorMsg)=><div className="position-absolute center_pos error-message text-danger">{errorMsg}</div>

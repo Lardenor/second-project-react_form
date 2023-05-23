@@ -5,7 +5,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import { validationSchema } from "../../validation/validation";
 import { useParams } from "react-router-dom";
-
+import React, { useEffect } from "react";
+import * as Yup from "yup";
 const UpdateContact = () => {
   const { id } = useParams();
   const contact = useSelector((state) =>
@@ -35,6 +36,12 @@ dispatch(editContact(id,formattedValues))
 
     navigate("/");
   };
+  const categories = useSelector((state) => state.categories);
+useEffect(() => {
+    validationSchema.fields.status = Yup.string()
+      .oneOf(["Work", "Family", "Private", "Friends", ...categories], "Invalid status")
+      .required("Status is required");
+  }, [categories]);
   function validateEmail(value) {
     let error;
     if (!value) {
@@ -176,25 +183,20 @@ dispatch(editContact(id,formattedValues))
                 </ErrorMessage>
               </div>
               {/* Status */}
-              <div className="d-flex bg-light rounded flex-column my-margin position-relative">
-                <label htmlFor="status" className="mb-1 padding-label">
-                  Status
-                </label>
-                <Field as="select" name="status" className="p-2">
-                  <option value="">Choose Status</option>
-                  <option value="Work">Work</option>
-                  <option value="Family">Family</option>
-                  <option value="Private">Private</option>
-                  <option value="Friends">Friends</option>
-                </Field>
-                <ErrorMessage name="status">
-                  {(errorMsg) => (
-                    <div className="position-absolute center_pos error-message text-danger">
-                      {errorMsg}
-                    </div>
-                  )}
-                </ErrorMessage>
-              </div>
+               <div className="d-flex bg-light rounded flex-column my-margin position-relative">
+              <label htmlFor="status" className="mb-1 padding-label">Status</label>
+              <Field as="select" name="status" className="p-2">
+  <option value="">Choose Status</option>
+  {categories.map((category) => (
+    <option key={category} value={category}>{category}</option>
+  ))}
+</Field>
+              <ErrorMessage name="status">
+                {
+                    (errorMsg)=><div className="position-absolute center_pos error-message text-danger">{errorMsg}</div>
+                }
+              </ErrorMessage>
+            </div>
               {/* Favorite */}
               <div className="d-flex justify-content-center align-items-center gap-3 mb-1">
                 <label htmlFor="favorite" className=" padding-label ">

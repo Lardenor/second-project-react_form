@@ -1,4 +1,4 @@
-import { ADD_CONTACT, DELETE_CONTACT, EDIT_CONTACT, SEARCH_CONTACT, TOGGLE_FAVORITE } from "./type";
+import { ADD_CONTACT, DELETE_CONTACT, EDIT_CONTACT, SEARCH_CONTACT, TOGGLE_FAVORITE,ADD_CATEGORY, DELETE_CATEGORY } from "./type";
 
 export const addContact = (newContact) => {
   return {
@@ -32,5 +32,17 @@ export const toggleFavorite = (updatedContact) => {
   return {
     type: TOGGLE_FAVORITE,
     payload: updatedContact,
+  };
+};
+export const addCategory = (categoryName) => {
+  return {
+    type: ADD_CATEGORY,
+    payload: categoryName,
+  };
+};
+export const deleteCategory = (category) => {
+  return {
+    type: DELETE_CATEGORY,
+    payload: category,
   };
 };

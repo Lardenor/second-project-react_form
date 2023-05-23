@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+
 export const validationSchema = Yup.object().shape({
 name: Yup.string()
       .matches(/^[a-zA-Z\s]*$/, "Name should only contain latin/letters")
@@ -17,7 +18,7 @@ name: Yup.string()
       .oneOf(["Man", "Woman"], "Invalid gender")
       .required("Gender is required"),
     status: Yup.string()
-      .oneOf(["Work", "Family", "Private", "Friends"], "Invalid status")
       .required("Status is required"),
     favorite: Yup.boolean(),
   });
+  

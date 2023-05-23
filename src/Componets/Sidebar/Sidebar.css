@@ -5,13 +5,48 @@
     width: 100px;
     text-align: center;
 }
-.bg_color_cont_1{
-background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
-
+.bg_color_cont_1 {
+    background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);
 }
-.bg_color_cont_2 {background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);}
-.bg_color_cont_3 {background: linear-gradient(90deg, #9ebd13 0%, #008552 100%);}
-.bg_color_cont_4 {background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+
+.bg_color_cont_2 {
+    background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+}
+
+.bg_color_cont_3 {
+    background: linear-gradient(90deg, #9ebd13 0%, #008552 100%);
+}
+
+.bg_color_cont_4 {
+    background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+}
+
+.bg_color_cont_5 {
+    background: linear-gradient(90deg, #FF4E50 0%, #F9D423 100%);
+}
+
+.bg_color_cont_6 {
+    background: linear-gradient(90deg, #93a5cf 0%, #e4efe9 100%);
+}
+
+.bg_color_cont_7 {
+    background: linear-gradient(90deg, #d66d75 0%, #e29587 100%);
+}
+
+.bg_color_cont_8 {
+    background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+}
+
+.bg_color_cont_9 {
+    background: linear-gradient(90deg, #007991 0%, #78ffd6 100%);
+}
+
+.bg_color_cont_10 {
+    background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+}
+
+.bg_color_cont_11 {
+    background: linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%);
 }
 .bg_color_cont{
 display: flex;

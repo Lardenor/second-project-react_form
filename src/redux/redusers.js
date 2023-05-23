@@ -1,7 +1,8 @@
-import { ADD_CONTACT, DELETE_CONTACT, EDIT_CONTACT, SEARCH_CONTACT, TOGGLE_FAVORITE } from "./type";
+import { ADD_CONTACT, DELETE_CONTACT, EDIT_CONTACT, SEARCH_CONTACT, TOGGLE_FAVORITE, ADD_CATEGORY, DELETE_CATEGORY } from "./type";
 
 const initialState = {
   contacts: [],
+   categories: ['Work', 'Family', 'Private', 'Friends'],
   searchTerm: '',
 };
 
@@ -43,6 +44,18 @@ const reducer = (state = initialState, action) => {
         ...state,
         contacts: state.contacts.map((contact) =>
           contact.id === id ? { ...contact, favorite: !contact.favorite } : contact
+        ),
+      };
+    case ADD_CATEGORY:
+      return {
+        ...state,
+        categories: [...state.categories, action.payload],
+      };
+    case DELETE_CATEGORY:
+      return {
+        ...state,
+        categories: state.categories.filter(
+          (category) => category !== action.payload
         ),
       };
     default:
